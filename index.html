@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>MXW Support Ticket</title>
+  <title>MXW Ticket Portal</title>
 
   <style>
     body{
@@ -16,7 +16,7 @@
       color:#e5e7eb
     }
     .card{
-      max-width:560px;
+      max-width:640px;
       width:92%;
       background:#111827;
       border:1px solid #1f2937;
@@ -25,9 +25,21 @@
       box-shadow:0 20px 40px rgba(0,0,0,.35)
     }
     h1{margin:0 0 10px;font-size:20px}
-    p{margin:6px 0;color:#cbd5e1;line-height:1.6}
+    p{margin:6px 0;color:#cbd5e1;line-height:1.7}
     .muted{font-size:13px;color:#94a3b8}
     hr{border:0;border-top:1px solid rgba(148,163,184,.35);margin:14px 0}
+    .btn{
+      display:inline-block;
+      margin-top:12px;
+      padding:10px 14px;
+      border-radius:12px;
+      background:#1f2937;
+      border:1px solid #334155;
+      color:#e5e7eb;
+      text-decoration:none;
+      font-size:14px;
+    }
+    .btn:hover{background:#243042}
   </style>
 </head>
 
@@ -38,15 +50,16 @@
   </div>
 
 <script>
-  // ✅ MXW Ticket Portal
+  // ✅ MXW ticket link
   const TICKET_URL =
     "https://ticket.cxgenie-mcw.com?bid=53ef8607-5c29-4287-9dae-7ad91568895a&lang=en";
 
-  // Office hours in Bangladesh time: 07:00 to 23:59 (BDT)
+  // ✅ Office hours in Bangladesh time: 07:00 to 23:59 (BDT)
   const OPEN_MIN = 7 * 60;         // 07:00
   const CLOSE_MIN = 23 * 60 + 59;  // 23:59
 
   function bdtMinutesNow(){
+    // Reliable Bangladesh time using Intl timezone
     const parts = new Intl.DateTimeFormat("en-US",{
       timeZone:"Asia/Dhaka",
       hour12:false,
@@ -65,10 +78,14 @@
   const now = bdtMinutesNow();
   const isOpen = now >= OPEN_MIN && now <= CLOSE_MIN;
 
-  if(isOpen){
-    title.textContent = "Redirecting to ticket form…";
-    msg.textContent = "Please wait.";
-    window.location.replace(TICKET_URL);
+  if (isOpen) {
+    title.textContent = "Redirecting to MXW ticket form…";
+    msg.innerHTML = `
+      Please wait. If you are not redirected automatically,
+      <a class="btn" href="${TICKET_URL}" rel="noopener noreferrer">Open Ticket Form</a>
+    `;
+    // Use timeout so page renders first (helps some browsers)
+    setTimeout(() => window.location.href = TICKET_URL, 250);
   } else {
     title.textContent = "We are closed now";
     msg.innerHTML = `
@@ -85,5 +102,10 @@
         এই মুহূর্তে আমাদের সাপোর্ট বন্ধ আছে।<br><br>
 
         আমাদের সাপোর্ট সময় <b>সকাল ৭:০০টা থেকে রাত ১২:০০টা (BDT)</b> পর্যন্ত।<br>
-        অনুগ্রহ করে <b>সকাল ৭:০০টায়</b> আবার এসে আ
-
+        অনুগ্রহ করে <b>সকাল ৭:০০টায়</b> আবার এসে আপনার টিকিট সাবমিট করুন।
+      </div>
+    `;
+  }
+</script>
+</body>
+</html>
