@@ -1,9 +1,9 @@
 <!doctype html>
-<html lang="en">
+<html lang="bn">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>MXW Ticket Portal</title>
+  <title>Mega Cricket World Affiliate Support</title>
 
   <style>
     body{
@@ -45,21 +45,20 @@
 
 <body>
   <div class="card">
-    <h1 id="title">Checking office hours…</h1>
+    <h1 id="title">Checking Mega Cricket World Affiliate support hours…</h1>
     <p id="msg" class="muted">Please wait.</p>
   </div>
 
 <script>
-  // ✅ MXW ticket link
+  // ✅ Mega Cricket World Affiliate Ticket (Bangla)
   const TICKET_URL =
-    "https://ticket.cxgenie-mcw.com?bid=53ef8607-5c29-4287-9dae-7ad91568895a&lang=bn";
+    "https://ticket.cxgenie-mcw.com?bid=cb244cb0-2a4f-4819-8530-c486655999a5&lang=bn";
 
-  // ✅ Office hours in Bangladesh time: 07:00 to 23:59 (BDT)
+  // ✅ Office hours (Bangladesh Time): 07:00 – 23:59
   const OPEN_MIN = 7 * 60;         // 07:00
   const CLOSE_MIN = 23 * 60 + 59;  // 23:59
 
   function bdtMinutesNow(){
-    // Reliable Bangladesh time using Intl timezone
     const parts = new Intl.DateTimeFormat("en-US",{
       timeZone:"Asia/Dhaka",
       hour12:false,
@@ -79,27 +78,28 @@
   const isOpen = now >= OPEN_MIN && now <= CLOSE_MIN;
 
   if (isOpen) {
-    title.textContent = "Redirecting to MXW ticket form…";
+    title.textContent = "Redirecting to Mega Cricket World Affiliate ticket form…";
     msg.innerHTML = `
       Please wait. If you are not redirected automatically,
-      <a class="btn" href="${TICKET_URL}" rel="noopener noreferrer">Open Ticket Form</a>
+      <a class="btn" href="${TICKET_URL}" rel="noopener noreferrer">
+        Open Mega Cricket World Affiliate Ticket Form
+      </a>
     `;
-    // Use timeout so page renders first (helps some browsers)
     setTimeout(() => window.location.href = TICKET_URL, 250);
   } else {
-    title.textContent = "We are closed now";
+    title.textContent = "Mega Cricket World Affiliate Support is closed now";
     msg.innerHTML = `
       <div>
-        <b>Dear Affiliates,</b><br>
-        We are closed now.<br><br>
+        <b>Dear Mega Cricket World Affiliates,</b><br>
+        Mega Cricket World Affiliate Support is currently closed.<br><br>
 
         Our support hours are <b>7:00 AM – 12:00 AM (BDT)</b>.<br>
         Please come back at <b>7:00 AM</b> in the morning to submit your ticket.
 
         <hr>
 
-        <b>প্রিয় অ্যাফিলিয়েটস,</b><br>
-        এই মুহূর্তে আমাদের সাপোর্ট বন্ধ আছে।<br><br>
+        <b>প্রিয় মেগা ক্রিকেট ওয়ার্ল্ড অ্যাফিলিয়েটস,</b><br>
+        এই মুহূর্তে <b>মেগা ক্রিকেট ওয়ার্ল্ড অ্যাফিলিয়েট সাপোর্ট</b> বন্ধ আছে।<br><br>
 
         আমাদের সাপোর্ট সময় <b>সকাল ৭:০০টা থেকে রাত ১২:০০টা (BDT)</b> পর্যন্ত।<br>
         অনুগ্রহ করে <b>সকাল ৭:০০টায়</b> আবার এসে আপনার টিকিট সাবমিট করুন।
